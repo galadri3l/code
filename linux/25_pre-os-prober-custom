@@ -1,0 +1,10 @@
+#! /bin/sh
+set -e
+
+# Save the $timeout and $timeout_style values set by /etc/grub.d/00_header
+# before /etc/grub.d/30_os-prober messes them up.
+
+cat << EOF
+set timeout_bak=\${timeout}
+set timeout_style_bak=\${timeout_style}
+EOF

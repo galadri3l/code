@@ -1,0 +1,97 @@
+ex1
+	print 
+	strint inside "" or ''
+ex2
+	comments biggining with #
+ex3
+	use , inside print to print values of different data types eg "hello",21 --a space is added b/w them
+	<,>,<=,>=,== relational operator
+	% for modulus
+	can use formula inside print eg 2 * 3 + 9
+	integer division like in c use 4.0/7 instead of 4/7
+	relational operator retrun boolean True or False
+ex4
+	learned about variables no need to give data type just assign the values using =
+	variable names just like c
+	variable arithmatic just like c eg a + b * c
+	print variable using , (comma) inside print eg print "hello", variable_name, "bye"
+ex5
+	use format specifier %d,%f as in c
+	%s for string
+	%r for raw format used for debugging
+	when giving specifier write print statement as
+			print "this is %r" % any_var
+			print "adding %d and %f gives %s and %r" %(a,b,string_var,any_var)
+
+ex6
+	concatenate string througe + eg str1 + str 2 --concatenate without space end to end
+ex7
+	to avoid newline in a print statement do 
+		print "This is a line without newline", --notice comma at the end
+ex8
+	%r does not print escape character such as newline or tab they are printed as is ie \n or \tab
+ex9
+	use \n for a new line as in c
+	use """ anythng """ or ''' snything ''' in print to pring anything even double or single quotes
+ex10
+	-- escape sequences --
+	\\ Backslash (\)
+	\' Single quote (')
+	\" Double quote (")
+	\a ASCII Bell (BEL)
+	\b ASCII Backspace (BS)
+	\f ASCII Formfeed (FF)
+	\n ASCII Linefeed (LF)
+	\N{name} Character named name in the Unicode database (Unicode only)
+	\r ASCII Carriage Return (CR)
+	\t ASCII Horizontal Tab (TAB)
+	\uxxxx Character with 16-bit hex value xxxx (Unicode only)
+	\Uxxxxxxxx Character with 32-bit hex value xxxxxxxx (Unicode only)
+	\v ASCII Vertical Tab (VT)
+	\ooo Character with octal value ooo
+	\xhh Character with hex value hh
+	
+	learned freebsd boot animation see source script
+ex11
+	use raw_input() to get value from user eg a = raw_input() value recieved is stored into about
+ex12
+	to pring a message while prompting for input use can place the prompt string without using print as
+		raw_input("please input the value ") notice space at the end, it places the prompt after giving a space
+ex13
+	from sys import argv -- to get the argument string from command line
+							it is stored in variable argv
+	script, argv1,argv2 = argv --to unpack arguments separated by spaces
+ex14
+	repetition of ex13
+ex15
+	txt = open(filename) --open a file in read mode
+	txt.close() --close the file
+	txt.read() --read the file you can directly print it as
+			   -- print txt.read()
+ex16
+	target = open(fllename,'w') --open file in write mode
+	target.write(string) --write string to file
+	target.truncate() --truncate the entire file
+ex17
+	from os.path import exists --import function exists(filename) to check if a file exists or not	
+							   --returns boolean true or false
+	data = open(filename).read()
+	len(data) --return no of bytes of data
+ex18
+	fuction definition as
+		def func_name(arguments):
+			function body
+			.
+			.
+	see source file for types of arguments
+	no need to give data type of arguments like in c
+ex19
+	you can pass values to function either directly, through variables ,or even arithmatic as in c
+ex20
+	file.seek(position) --to get to a position in a file
+	file.readline() --read line one at a time and keep record of current line position
+ex21
+	function can return values using
+	return expression
+	
+	note: no change in function header as in c ie no void or return type
