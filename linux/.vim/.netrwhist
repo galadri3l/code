@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/yash/.config/tint2'
+let g:netrw_dirhist_2='/home/yash/.emacs.d'
+let g:netrw_dirhist_3='/home/yash/.config/fish/functions'
+let g:netrw_dirhist_4='/home/yash/.config/lxpanel'
+let g:netrw_dirhist_5='/home/yash/devl'
+let g:netrw_dirhist_6='/media/cmdrive/linux/texlive2015/texmf-local'

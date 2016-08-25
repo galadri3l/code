@@ -1,0 +1,473 @@
+<html>
+<head>
+<link href="http://blog.quicklisp.org/feeds/posts/default" rel="alternate" type="application/atom+xml" title="Quicklisp news feed">
+<title>Quicklisp beta</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+<style type='text/css'>
+#maintenance {
+  background: #f00;
+  color: yellow;
+  text-align: center;
+  padding: 0.5em;
+  border: dashed 3px yellow;
+}
+
+#quickstart {
+  background: #dfd;
+  padding: 0.5em;
+  text-align: center;
+}
+
+#examplesession {
+  background: #ddd;
+  border-left: solid 2px #ccc;
+  padding: 0.5em;
+  overflow: auto;
+}
+</style>
+</head>
+
+<body>
+<div id='content'>
+<h1>Quicklisp beta</h1>
+
+<p><a href="https://www.quicklisp.org/">Quicklisp</a> is a library
+  manager for Common Lisp. It works with your existing Common Lisp
+  implementation to download, install, and load any
+  of <a href="releases.html">over 1,200 libraries</a> with a few
+  simple commands.
+
+<p>Quicklisp is easy to install and works
+  with <A href="https://common-lisp.net/project/armedbear/">ABCL</a>,
+  <a href="http://franz.com/enterprise_development_tools.lhtml">Allegro CL</a>,
+  <a href="https://github.com/drmeister/clasp">Clasp</a>, <a href="http://ccl.clozure.com/">Clozure
+  CL</a>, <a href="http://www.clisp.org/">CLISP</a>, <a href="http://cmucl.cons.org/">CMUCL</a>,
+  <a href="http://common-lisp.net/project/ecl/">ECL</a>, <a href="http://www.lispworks.com/">LispWorks</a>, <a href="https://common-lisp.net/project/mkcl/">MKCL</a>,
+  <a href="http://www.sbcl.org/">SBCL</a>, and
+  <a href="http://www.scieneer.com/">Scieneer CL</a>, on Linux, Mac OS
+  X, and Windows. The <a href="releases.html">libraries</a> were last
+  updated on June 29, 2016.
+
+<p id='quickstart'>To get started with the Quicklisp beta, download
+and load
+  <a href="https://beta.quicklisp.org/quicklisp.lisp">https://beta.quicklisp.org/quicklisp.lisp</a>
+  <br><br><a href="https://beta.quicklisp.org/quicklisp.lisp.asc">PGP signature</a>
+<br>sha256 = 4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17
+
+
+
+<p>Quicklisp is provided
+  as-is <a href='#license'>without warranty of any kind</a>. See the
+  <a href="release-notes.html">release notes</a> for known problems.
+
+<ul>
+<li> <a href='#installation'>Installation</a>
+<li> <a href='#loading'>Loading After Installation</a>
+<li> <a href='#basic-commands'>Basic Commands</a>
+<li> <a href='faq.html'>Frequently Asked Questions</a>
+<li> <a href='#license'>License information</a>
+</ul>
+
+<p>To get news and announcements,
+  follow <a href="http://twitter.com/quicklisp">@quicklisp</a> on
+  twitter or read <a href="http://blog.quicklisp.org/">the Quicklisp
+  blog</a>. If you have any questions or comments,
+  please <a href="mailto:zach@quicklisp.org">email me</a>, 
+  use the <a href="http://groups.google.com/group/quicklisp/">
+  Quicklisp discussion group mailing list</a>, or visit #quicklisp on freenode. Quicklisp code is <a href="http://github.com/quicklisp/">hosted on
+    GitHub</a>.
+
+<a name='installation'></a>
+<h3>Installation</h3>
+
+<p>To install Quicklisp,
+  download <a href="https://beta.quicklisp.org/quicklisp.lisp">quicklisp.lisp</a>
+  and load it. 
+
+<p>To verify the integrity of quicklisp.lisp, you can download its
+  <a href="https://beta.quicklisp.org/quicklisp.lisp.asc">detached PGP
+  signature file</a> and verify it against
+  the <a href="https://beta.quicklisp.org/release-key.txt">Quicklisp
+  release signing key</a>, which has a fingerprint of <tt><nobr>D7A3
+  489D DEFE 32B7 D0E7 CC61 3079 65AB 028B 5FF7</nobr></tt>, an id
+  of <tt>028B5FF7</tt>, and an email
+  of <tt>release@quicklisp.org</tt>.
+
+<p>You only need to load <tt><nobr>quicklisp.lisp</nobr></tt> once to
+  install Quicklisp. See <a href="#loading">Loading After
+  Installation</a> for how to load the installed Quicklisp into your
+  Lisp session after the initial installation.
+
+<p>Here's an example installation session on MacOS X with SBCL. In
+  this example, <b>$</b> is the shell prompt and <b>*</b> is the Lisp
+  REPL prompt.
+
+<pre id='examplesession'>
+$ <b>curl -O <a href="https://beta.quicklisp.org/quicklisp.lisp">https://beta.quicklisp.org/quicklisp.lisp</a></b>
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 49843  100 49843    0     0  33639      0  0:00:01  0:00:01 --:--:-- 50397
+
+$ <b>curl -O <a href="https://beta.quicklisp.org/quicklisp.lisp.asc">https://beta.quicklisp.org/quicklisp.lisp.asc</a></b>
+...
+$ <b>gpg --verify quicklisp.lisp.asc quicklisp.lisp</b>
+gpg: Signature made Sat Feb  1 09:25:28 2014 EST using RSA key ID 028B5FF7
+gpg: Good signature from "Quicklisp Release Signing Key <release@quicklisp.org>"
+$ <b>sbcl --load quicklisp.lisp</b>
+This is SBCL 1.0.42.52, an implementation of ANSI Common Lisp.
+More information about SBCL is available at &lt;http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+
+  ==== quicklisp quickstart loaded ====
+
+    To continue, evaluate: (quicklisp-quickstart:install)
+
+* <b>(quicklisp-quickstart:install)</b>
+
+; Fetching #&lt;URL "http://beta.quicklisp.org/quickstart/asdf.lisp">
+; 144.48KB
+==================================================
+147,949 bytes in 0.64 seconds (226.11KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/quickstart/quicklisp.tar">
+; 160.00KB
+==================================================
+163,840 bytes in 0.76 seconds (211.36KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/quickstart/setup.lisp">
+; 2.78KB
+==================================================
+2,846 bytes in 0.001 seconds (2779.30KB/sec)
+Upgrading ASDF package from version 2.004 to version 2.009
+; Fetching #&lt;URL "http://beta.quicklisp.org/dist/quicklisp.txt">
+; 0.40KB
+==================================================
+408 bytes in 0.003 seconds (132.81KB/sec)
+
+  ==== quicklisp installed ====
+
+    To load a system, use: (ql:quickload "system-name")
+
+    To find systems, use: (ql:system-apropos "term")
+
+    To load Quicklisp every time you start Lisp, use: (ql:add-to-init-file)
+
+    For more information, see http://www.quicklisp.org/beta/
+
+NIL
+* <b>(ql:system-apropos "vecto")</b>
+
+; Fetching #&lt;URL "http://beta.quicklisp.org/dist/quicklisp/2010-10-07/systems.txt">
+; 45.30KB
+==================================================
+46,386 bytes in 0.50 seconds (89.70KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/dist/quicklisp/2010-10-07/releases.txt">
+; 83.49KB
+==================================================
+85,490 bytes in 0.53 seconds (157.22KB/sec)
+#&lt;SYSTEM cl-vectors / cl-vectors-20101006-git / quicklisp 2010-10-07>
+#&lt;SYSTEM lispbuilder-sdl-cl-vectors / lispbuilder-20101006-svn / quicklisp 2010-10-07>
+#&lt;SYSTEM lispbuilder-sdl-cl-vectors-examples / lispbuilder-20101006-svn / quicklisp 2010-10-07>
+#&lt;SYSTEM lispbuilder-sdl-vecto / lispbuilder-20101006-svn / quicklisp 2010-10-07>
+#&lt;SYSTEM lispbuilder-sdl-vecto-examples / lispbuilder-20101006-svn / quicklisp 2010-10-07>
+#&lt;SYSTEM static-vectors / static-vectors-20101006-git / quicklisp 2010-10-07>
+#&lt;SYSTEM vecto / vecto-1.4.3 / quicklisp 2010-10-07>
+NIL
+* <b>(ql:quickload "vecto")</b>
+To load "vecto":
+  Install 5 Quicklisp releases:
+    cl-vectors salza2 vecto zpb-ttf zpng
+; Fetching #&lt;URL "http://beta.quicklisp.org/archive/salza2/2010-10-06/salza2-2.0.7.tgz">
+; 14.84KB
+==================================================
+15,197 bytes in 0.12 seconds (125.77KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/archive/zpng/2010-10-06/zpng-1.2.tgz">
+; 38.59KB
+==================================================
+39,521 bytes in 0.37 seconds (103.47KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/archive/zpb-ttf/2010-10-06/zpb-ttf-1.0.tgz">
+; 42.59KB
+==================================================
+43,611 bytes in 0.39 seconds (110.33KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/archive/cl-vectors/2010-10-06/cl-vectors-20101006-git.tgz">
+; 40.40KB
+==================================================
+41,374 bytes in 0.37 seconds (109.20KB/sec)
+; Fetching #&lt;URL "http://beta.quicklisp.org/archive/vecto/2010-10-06/vecto-1.4.3.tgz">
+; 75.71KB
+==================================================
+77,526 bytes in 0.49 seconds (153.57KB/sec)
+; Loading "vecto"
+..................................................
+[package zpb-ttf].................................
+[package salza2]..................................
+[package zpng]....................................
+[package net.tuxee.paths].........................
+[package net.tuxee.aa]............................
+[package net.tuxee.aa-bin]........................
+[package net.tuxee.vectors].......................
+[package vecto]........
+("vecto")
+* <b>(ql:add-to-init-file)</b>
+I will append the following lines to #P"/Users/quicklisp/.sbclrc":
+
+  ;;; The following lines added by ql:add-to-init-file:
+  #-quicklisp
+  (let ((quicklisp-init (merge-pathnames "quicklisp/setup.lisp"
+                                         (user-homedir-pathname))))
+    (when (probe-file quicklisp-init)
+      (load quicklisp-init)))
+
+Press Enter to continue.
+
+
+#P"/Users/quicklisp/.sbclrc"
+* <b>(quit)</b>
+$ 
+</pre>
+
+<p>Although this example uses a Unix shell, the same procedure would
+  work for installation in the REPL of a Windows or Mac GUI-based CL
+  implementation.
+
+<a name='loading'></a>
+<h3>Loading After Installation</h3>
+
+<p>You only need to install Quicklisp with <code>quicklisp.lisp</code>
+  once. To load Quicklisp into your Common Lisp session after the
+  initial installation, load the
+  file <code>quicklisp/setup.lisp</code> with the Common
+  Lisp <a href="http://l1sp.org/cl/load"><code>load</code></a> function.
+
+<p>For example, if you installed Quicklisp in the default location in
+  your home directory, the following command suffices to load
+  Quicklisp into a running session:
+
+<pre>
+    (load "~/quicklisp/setup.lisp")
+</pre>
+
+<p>The path must be adjusted if Quicklisp is loaded in a different
+location, or if your implementation does not support the ~ pathname
+syntax (i.e. CMUCL).
+
+<p>The function <code>ql:add-to-init-file</code> will add code to do
+  this to your init file automatically, so Quicklisp will load
+  whenever your Common Lisp session starts.
+
+
+<a name='basic-commands'></a>
+<h3>Basic Commands</h3>
+
+<p><b>To load software</b>, use:
+
+<pre>
+    (ql:quickload <i>system-name</i>)
+</pre>
+
+<p>For example:
+
+<pre>
+    CL-USER> <b>(ql:quickload "vecto")</b>
+    To load "vecto":
+      Install 5 Quicklisp releases:
+	cl-vectors salza2 vecto zpb-ttf zpng
+    <i>loading output here</i>
+</pre>
+
+<p>Quicklisp will automatically download any supporting software it
+  needs to load the system.
+
+<p>Please note that some systems have different names than their
+  projects. For example, to load cl-yacc's system,
+  run <tt>(ql:quickload&nbsp;"yacc")</tt>,
+  not <tt>(ql:quickload&nbsp;"cl-yacc")</tt>.
+
+<p><tt>ql:quickload</tt> can also be used to load local systems that
+  aren't part of Quicklisp. If the local system depends on software
+  that is available through Quicklisp, the dependencies will be
+  automatically loaded.
+
+<p>By default, <tt>ql:quickload</tt> hides most compilation and
+loading output, including warnings, and shows progess as a series of
+dots. You can show full compilation and loading output by
+passing <tt>:verbose&nbsp;t</tt> as arguments
+to <tt>ql:quickload</tt>. This output can be especially helpful when
+reporting and troubleshooting problems.
+
+<p><b>To remove software</b>, use:
+
+<pre>
+    (ql:uninstall <i>system-name</i>)
+</pre>
+
+<p>For example:
+
+<pre>
+    CL-USER> <b>(ql:uninstall "vecto")</b>
+    T
+</pre>
+
+<p>An uninstall does the following:
+
+<ul>
+<li> Deletes the system's tarball archive and unpacked source files
+<li> Deletes Quicklisp metadata files associated with the system
+<li> Clears ASDF's system cache via <tt>asdf:clear-system</tt>
+</ul>
+
+<p>Uninstalling does <i>not</i> alter the current Lisp session in any
+  other way; if the given system has been loaded, it remains loaded
+  and accessible until the session is ended.
+
+<p><b>To find out what's available</b> in Quicklisp, use:
+
+<pre>
+    (ql:system-apropos <i>substring</i>)
+</pre>
+
+<p>For example:
+
+<pre>
+    CL-USER> <b>(ql:system-apropos "xml")</b>
+    #&lt;SYSTEM bknr.xml / bknr-datastore-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cl-libxml2 / cl-libxml2-0.3.4 / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml / cxml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-dom / cxml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-klacks / cxml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-rng / cxml-rng-2008-11-30 / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-rpc / cxml-rpc-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-stp / cxml-stp-2008-11-30 / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-stp-test / cxml-stp-2008-11-30 / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-test / cxml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM cxml-xml / cxml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM pithy-xml / pithy-xml-20100916-git / quicklisp 2010-09-16>
+    #&lt;SYSTEM s-xml / s-xml-20100916-http / quicklisp 2010-09-16>
+    #&lt;SYSTEM s-xml-rpc / s-xml-rpc-20100916-http / quicklisp 2010-09-16>
+    #&lt;SYSTEM xml-render / cl-typesetting-20100916-svn / quicklisp 2010-09-16>
+    #&lt;SYSTEM xmls / xmls-1.3 / quicklisp 2010-09-16>
+</pre>
+
+<p>The system name is the word after "SYSTEM" and before the first
+  "/", e.g. "cxml-stp". System names are used by <tt>ql:quickload</tt>
+  and for expressing dependency information in system definitions.
+
+<p>While <tt>ql:system-apropos</tt> is useful for simple string
+  searches of system and project
+  names, <a href="http://quickdocs.org">Quickdocs provides a more
+  general full-text search for systems and projects</a>.
+
+<p><b>To load Quicklisp when you start Lisp</b>, use:
+
+<pre>
+    (ql:add-to-init-file)
+</pre>
+
+<p>Quicklisp will append code to your Lisp's init file that will load
+  Quicklisp on startup.
+
+
+<p><a name='slime'><b>To install and configure SLIME</b>, use:</a>
+
+<pre>
+    (ql:quickload "quicklisp-slime-helper")
+</pre>
+
+<p>Then follow the directions it
+  displays. <tt>quicklisp-slime-helper</tt> will create a file you can
+  load in Emacs that configures the right load-path for loading
+  Quicklisp's installation of SLIME.
+
+
+<p><b>To get updated software</b>, use:
+
+<pre>
+    (ql:update-all-dists)
+</pre>
+
+
+<p><b>To update the Quicklisp client</b>, use:
+
+<pre>
+    (ql:update-client)
+</pre>
+
+
+<p><b>To go back to a previous set of libraries</b>, see the blog
+post <a href="http://blog.quicklisp.org/2011/08/going-back-in-dist-time.html">Going
+back in (dist) time</a>. This can be useful if your project depends on
+the state (APIs, etc) of the Quicklisp library universe from a
+particular point in time.
+
+<p><b>To see what systems depend on a particular system</b>, use:
+
+<pre>
+   (ql:who-depends-on <i>system-name</i>)
+</pre>
+
+<a name='faq'></a>
+
+
+<a name='license'></a>
+<h3>License information</h3>
+
+<pre>
+  Copyright &copy; 2010 Zachary Beane &lt;zach@quicklisp.org>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+</pre>
+
+<p>Portions of Quicklisp are derived
+from <a href="http://pierre-mai.de/">Pierre Mai</a>'s Deflate library,
+which is available under the following terms:
+
+<pre>
+  Deflate --- RFC 1951 Deflate Decompression
+
+  Copyright (C) 2000-2009 PMSF IT Consulting Pierre R. Mai.
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+  IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR
+  OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+  OTHER DEALINGS IN THE SOFTWARE.
+
+  Except as contained in this notice, the name of the author shall
+  not be used in advertising or otherwise to promote the sale, use or
+  other dealings in this Software without prior written authorization
+  from the author.
+</pre>
+
+<p style='font-size: 85%'><a href="mailto:zach@quicklisp.org">Zach Beane</a> 2015-04-30
+

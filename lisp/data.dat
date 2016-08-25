@@ -1,0 +1,2 @@
+
+((:|TITLE| "Uptown Funk" :|ARTIST| "Bruno Mars" :|RATING| 10. :|RIPPED| |COMMON-LISP|::|T|) (:|TITLE| "Rolling in the deep" :|ARTIST| "Adele" :|RATING| 9. :|RIPPED| |COMMON-LISP|::|T|) (:|TITLE| "x gon give it ya" :|ARTIST| "Dma" :|RATING| 8. :|RIPPED| |COMMON-LISP|::|T|) (:|TITLE| "Set Fire To The Rain" :|ARTIST| "Adele" :|RATING| 7. :|RIPPED| |COMMON-LISP|::|NIL|)) 

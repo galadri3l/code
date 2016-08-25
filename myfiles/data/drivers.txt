@@ -1,0 +1,1 @@
+smbus 8086:1c22  drivers/12c/smbus/

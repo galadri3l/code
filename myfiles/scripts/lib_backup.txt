@@ -1,0 +1,2 @@
+rsync -av --delete library /media/yash/my_sandbox/backup/ | tee ~/lib_backup.log
+#use man rsync for more details

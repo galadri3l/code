@@ -1,0 +1,9 @@
+hardstatus alwayslastline
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{= wr}(%{r}%n*%f%t%?(%u)%?%{r})%{= kw}%?%+Lw%? %=%{g}][%{B}%d-%m-%Y %{W}%C:%s %A %{= wr}%l %{= kg}]'
+
+#Default screens
+#screen -t NameOfScreen	ScreenNumber ShellCommand
+#hardstatus alwayslastline '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f%t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{y}][%{G} %l%{y}] %{y}[%{G} %m/%d %c %{y}]%{W}'
+

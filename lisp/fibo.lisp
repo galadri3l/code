@@ -1,0 +1,7 @@
+(defun fibonacci(n)
+  (do ((a 0 b)
+       (b 1 (+ a b))
+       (i 0 (1+ i))
+       )
+    ((= n i) "evaluation completed")
+    (format t "~a~%" a)))

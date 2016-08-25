@@ -1,0 +1,1 @@
+sudo mount -t ntfs /dev/sda3 /media/cmdrive/ -o uid=1000,gid=1000,fmask=077,dmask=077

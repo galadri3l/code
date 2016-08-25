@@ -1,0 +1,2 @@
+export AXIOM=`pwd`/mnt/ubuntu64
+export PATH=$AXIOM/bin:$PATH

@@ -1,0 +1,52 @@
+### BEGIN /etc/grub.d/30_os-prober ###
+menuentry 'Ubuntu 15.10 (15.10) (on /dev/mmcblk0p1)' --class gnu-linux --class gnu --class os $menuentry_id_option 'osprober-gnulinux-simple-3f9b3651-8d2d-496b-854f-534646f45fa6' {
+	insmod part_msdos
+	insmod ext2
+	set root='hd0,msdos7'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root  e7bd2857-3f62-419e-b127-d5011ccd808d
+	else
+	  search --no-floppy --fs-uuid --set=root  e7bd2857-3f62-419e-b127-d5011ccd808d
+	fi
+	linux /boot.sdcard/vmlinuz-4.2.0-16-generic root=UUID=3f9b3651-8d2d-496b-854f-534646f45fa6 ro
+	initrd /boot.sdcard/initrd.img-4.2.0-16-generic
+}
+submenu 'Advanced options for Ubuntu 15.10 (15.10) (on /dev/mmcblk0p1)' $menuentry_id_option 'osprober-gnulinux-advanced-3f9b3651-8d2d-496b-854f-534646f45fa6' {
+	menuentry 'Ubuntu (on /dev/mmcblk0p1)' --class gnu-linux --class gnu --class os $menuentry_id_option 'osprober-gnulinux-/boot/vmlinuz-4.2.0-16-generic--3f9b3651-8d2d-496b-854f-534646f45fa6' {
+		insmod part_msdos
+		insmod ext2
+		set root='hd0,msdos7'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root  e7bd2857-3f62-419e-b127-d5011ccd808d
+		else
+		  search --no-floppy --fs-uuid --set=root e7bd2857-3f62-419e-b127-d5011ccd808d
+		fi
+		linux /boot.sdcard/vmlinuz-4.2.0-16-generic root=UUID=3f9b3651-8d2d-496b-854f-534646f45fa6 ro
+		initrd /boot.sdcard/initrd.img-4.2.0-16-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.2.0-16-generic (on /dev/mmcblk0p1)' --class gnu-linux --class gnu --class os $menuentry_id_option 'osprober-gnulinux-/boot/vmlinuz-4.2.0-16-generic--3f9b3651-8d2d-496b-854f-534646f45fa6' {
+		insmod part_msdos
+		insmod ext2
+		set root='hd0,msdos7'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root  e7bd2857-3f62-419e-b127-d5011ccd808d
+		else
+		  search --no-floppy --fs-uuid --set=root e7bd2857-3f62-419e-b127-d5011ccd808d
+		fi
+		linux /boot.sdcard/vmlinuz-4.2.0-16-generic root=UUID=3f9b3651-8d2d-496b-854f-534646f45fa6 ro
+		initrd /boot.sdcard/initrd.img-4.2.0-16-generic
+	}
+	menuentry 'Ubuntu, with Linux 4.2.0-16-generic (recovery mode) (on /dev/mmcblk0p1)' --class gnu-linux --class gnu --class os $menuentry_id_option 'osprober-gnulinux-/boot/vmlinuz-4.2.0-16-generic-root=UUID=3f9b3651-8d2d-496b-854f-534646f45fa6 ro recovery nomodeset-3f9b3651-8d2d-496b-854f-534646f45fa6' {
+		insmod part_msdos
+		insmod ext2
+		set root='hd0,msdos7'
+		if [ x$feature_platform_search_hint = xy ]; then
+		  search --no-floppy --fs-uuid --set=root  e7bd2857-3f62-419e-b127-d5011ccd808d
+		else
+		  search --no-floppy --fs-uuid --set=root e7bd2857-3f62-419e-b127-d5011ccd808d
+		fi
+		linux /boot.sdcard/vmlinuz-4.2.0-16-generic root=UUID=3f9b3651-8d2d-496b-854f-534646f45fa6 ro recovery nomodeset
+		initrd /boot.sdcard/initrd.img-4.2.0-16-generic
+	}
+}
+## END /etc/grub.d/41_custom ###

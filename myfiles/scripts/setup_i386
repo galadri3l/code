@@ -1,0 +1,37 @@
+# Three symlinks and one file is created in order to support 32 bit
+# binaries in 64 bit version of the linux operating system.
+
+# Symlinks are
+# |--/lib/i386-linux-gnu -> /media/yash/e_cmdisk/devl/vi386/lib/i386-linux-gnu
+# |--/lib/ld-linux.so.2 -> /lib/i386-linux-gnu/ld-2.19.so
+# |--/usr/lib/i386-linux-gnu -> /media/yash/e_cmdisk/devl/vi386/usr/lib/i386-linux-gnu
+
+# File created is
+# |--/etc/ld.so.conf.d/i686-linux-gnu-all_custom_yash.conf
+
+# the 'vi386' folder in devl is a mount point for the squashfs filesystem
+# copied from the i386 version of the ubuntu live iso i.e you need not to 
+# unpack,copy or download libraries and set path. Entire ubuntu i386 system
+# is mounted on vi386 folder and all you need to set is three symlinks
+# note that /lib/ld-linux.so.2 symlink works only if /lib/i386-linux-gnu
+# symlink works, i.e when vi386 is not mounted the linker is not found
+# thus 32 bit binaries are not loaded and a 'file not found' or similer
+# error is generated when you try to run 32 bit binaries restoring the 
+# the system to original 64 bit state 
+
+# You need to set some search path for the 32 bit version of the dynamic
+# linker. The /etc/ld.so.conf.d folder in the 32 bit version of the ubuntu or
+# linux os contains three or four *.conf files which contain search path
+# for dynamic libraries all these files wered 'cat-ed' and their output
+# redirected to 'i686-linux-gnu-all_custom_yash.conf' and put in 
+# /etc/ld.so.conf.d folder of 64 bit os. To refresh the cache run the command
+#		
+#			$ ldconfig
+#
+# this command rebuilds the shared library cache.
+
+# to uninstall support for 32 bit binaries just delete 4 files and the 
+# squashfs filesystem and you are good to go. No need ot download any
+# libraries and packages from the ubuntu repositories.
+
+sudo mount /media/yash/e_cmdisk/devl/filesystem.squashfs /media/yash/e_cmdisk/devl/vi386 -t squashfs -o loop
